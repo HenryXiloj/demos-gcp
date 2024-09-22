@@ -23,11 +23,11 @@ def get_connection():
         
         # Create a connection to the Cloud SQL PostgreSQL instance using PSC
         conn = connector.connect(
-            "terraform-workspace-436316:us-central1:psc-instance",  # Cloud SQL instance name
+            "<PROJECT-ID>:<REGION>:psc-instance",  # Cloud SQL instance name
             "pg8000",
-            user="henry",
-            password="hxi123",
-            db="my-database3",
+            user="<user>",
+            password="<passoword>",
+            db="<my-database>",
             ip_type="psc"
         )
         logger.info("Successfully connected to the Cloud SQL instance.")
