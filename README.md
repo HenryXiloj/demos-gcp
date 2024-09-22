@@ -1,4 +1,4 @@
-﻿# cloudsql-psc-cloudrun-springboot
+﻿# cloudsql-psc-cloudrun
 
 # Detailed description and steps for run project found here: 
 [Terraform project](https://www.linkedin.com/pulse/provisioning-cloud-sql-private-service-connect-using-xiloj-herrera-fj1ee/)
