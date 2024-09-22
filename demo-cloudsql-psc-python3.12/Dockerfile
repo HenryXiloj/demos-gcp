@@ -19,7 +19,7 @@ COPY main.py .
 # ENV GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
 
 # Set the environment variable for the Cloud SQL instance connection name
-#ENV INSTANCE_CONNECTION_NAME="terraform-workspace-413615:us-central1:psc-instance"
+#ENV INSTANCE_CONNECTION_NAME="<PROJECT-ID>:<REGION>:psc-instance"
 
 # Run the application
 CMD ["python", "main.py"]
