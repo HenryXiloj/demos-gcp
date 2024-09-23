@@ -1,4 +1,4 @@
-# cloudsql-psc-cloudrun
+# cloudsql-psc
 
 ## Detailed Description and Steps to Run the Project
 
