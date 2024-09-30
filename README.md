@@ -1,7 +1,5 @@
 # Demos GCP
 
-# cloudsql-psc
-
 ## Detailed Description and Steps to Run the Project
 
 This repository contains multiple projects demonstrating the integration of Cloud SQL with Private Service Connect (PSC) and deployment to Cloud Run.
