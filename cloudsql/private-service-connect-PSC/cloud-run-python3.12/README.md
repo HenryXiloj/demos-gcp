@@ -86,10 +86,6 @@ The application uses Python's logging module to log debug, info, and error messa
 - `PORT`: The port on which the Flask app runs (default: 8080)
 - `NAME`: Used in the hello world message (default: "World")
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
