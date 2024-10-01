@@ -57,6 +57,31 @@ Use Maven to build the project and generate the executable jar file:
 mvn clean install
 ```
 
+### 4. After clean install, you can build the Docker image locally using the following command:
+```bash
+docker build -t quickstart-springboot:1.0.1 .
+```
+
+### 5. To push the Docker image to the Artifact Registry, you first need to tag it with the appropriate URL:
+```bash
+docker tag quickstart-springboot:1.0.1 us-central1-docker.pkg.dev/<PROJECT_ID>/my-repo/quickstart-springboot:1.0.1
+```
+
+### 6. Push the tagged image to the Artifact Registry::
+```bash
+docker push us-central1-docker.pkg.dev/<PROJECT_ID>/my-repo/quickstart-springboot:1.0.1
+```
+
+### 7. Deploy the Spring Boot application to Google Cloud Run using the gcloud command:
+```bash
+gcloud run deploy springboot-cloudsql-run \
+  --image us-central1-docker.pkg.dev/<PROJECT_ID>/my-repo/quickstart-springboot:1.0.1 \
+  --region=us-central1 \
+  --allow-unauthenticated \
+  --service-account=cloudsql-service-account-id@<PROJECT-ID>.iam.gserviceaccount.com \
+  --vpc-connector private-cloud-sql
+```
+
 ## Important Notes
 
 - **Authentication to Cloud SQL**: The application uses Cloud SQL socket factory to connect securely. Ensure your Google Cloud service account has the correct IAM roles for accessing the Cloud SQL instance.

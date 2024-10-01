@@ -26,51 +26,38 @@ This project demonstrates a Flask application that connects to a Cloud SQL Postg
    cd <repository-name>
    ```
 
-2. Install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Set up your Cloud SQL instance connection details in `main.py`:
+2. Set up your Cloud SQL instance connection details in `main.py`:
    - Replace `<PROJECT-ID>:<REGION>:psc-instance` with your actual instance connection name
    - Update the `user`, `password`, and `db` fields with your database credentials
 
-4. If using a service account key, uncomment and update the relevant lines in the Dockerfile:
-   ```dockerfile
-   COPY your-service-account-key.json /app/service-account-key.json
-   ENV GOOGLE_APPLICATION_CREDENTIALS=/app/service-account-key.json
-   ```
 
-5. Set the `INSTANCE_CONNECTION_NAME` environment variable in the Dockerfile:
+3. Set the `INSTANCE_CONNECTION_NAME` environment variable in the Dockerfile:
    ```dockerfile
    ENV INSTANCE_CONNECTION_NAME="<PROJECT-ID>:<REGION>:psc-instance"
    ```
 
 ## Running the Application
 
-### Locally
-
-To run the application locally:
-
+### 4. Build and Push the Docker Image
+```bash
+docker build -t quickstart-python:1.0.1 .
 ```
-python main.py
+```bash
+docker tag quickstart-python:1.0.1 us-central1-docker.pkg.dev/MY_PROJECT_ID/my-repo/quickstart-python:1.0.1
+```
+```bash
+docker push us-central1-docker.pkg.dev/MY_PROJECT_ID/my-repo/quickstart-python:1.0.1 
 ```
 
-The application will start on `http://localhost:8080`.
-
-### Using Docker
-
-1. Build the Docker image:
-   ```
-   docker build -t cloud-sql-flask-app .
-   ```
-
-2. Run the Docker container:
-   ```
-   docker run -p 8080:8080 cloud-sql-flask-app
-   ```
-
-The application will be accessible at `http://localhost:8080`.
+### 5. Deploy to Cloud Run
+```bash
+gcloud run deploy python-cloudsql-run \
+  --image us-central1-docker.pkg.dev/MY_PROJECT_ID/my-repo/quickstart-python:1.0.1 \
+  --region=us-central1 \
+  --allow-unauthenticated \
+  --service-account=cloudsql-service-account-id@terraform-workspace-436316.iam.gserviceaccount.com \
+  --vpc-connector private-cloud-sql 
+```
 
 ## API Endpoints
 

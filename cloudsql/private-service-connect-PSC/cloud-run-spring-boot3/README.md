@@ -41,35 +41,35 @@ This project demonstrates a Spring Boot 3 application with Java 17, connecting t
 
 ## Building and Running
 
-1. Build the project:
-   ```
-   mvn clean package
-   ```
-
-2. Run the application:
-   ```
-   java -jar target/demo-cloudsql.jar
-   ```
-
-## Docker
-
-A Dockerfile is provided to containerize the application:
-
-```dockerfile
-FROM openjdk:17-jdk-slim
-WORKDIR /app
-COPY target/demo-cloudsql.jar app.jar
-ENTRYPOINT ["java", "-jar", "app.jar"]
+### 2.1. Build the project
+Use Maven to build the project and generate the executable jar file:
+```bash
+mvn clean install
 ```
 
-Build the Docker image:
-```
-docker build -t demo-cloudsql .
+### 2.2. After clean install, you can build the Docker image locally using the following command:
+```bash
+docker build -t quickstart-springboot:1.0.1 .
 ```
 
-Run the Docker container:
+### 2.3. To push the Docker image to the Artifact Registry, you first need to tag it with the appropriate URL:
+```bash
+docker tag quickstart-springboot:1.0.1 us-central1-docker.pkg.dev/<PROJECT_ID>/my-repo/quickstart-springboot:1.0.1
 ```
-docker run -p 8080:8080 demo-cloudsql
+
+### 2.4. Push the tagged image to the Artifact Registry::
+```bash
+docker push us-central1-docker.pkg.dev/<PROJECT_ID>/my-repo/quickstart-springboot:1.0.1
+```
+
+### 2.5. Deploy the Spring Boot application to Google Cloud Run using the gcloud command:
+```bash
+gcloud run deploy springboot-cloudsql-run \
+  --image us-central1-docker.pkg.dev/<PROJECT_ID>/my-repo/quickstart-springboot:1.0.1 \
+  --region=us-central1 \
+  --allow-unauthenticated \
+  --service-account=cloudsql-service-account-id@<PROJECT-ID>.iam.gserviceaccount.com \
+  --vpc-connector private-cloud-sql
 ```
 
 ## API Endpoints
