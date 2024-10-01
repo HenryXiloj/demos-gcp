@@ -28,7 +28,7 @@ def get_connection():
             user="<user>",
             password="<passoword>",
             db="<my-database>",
-            ip_type="psc"
+            ip_type="PRIVATE"
         )
         logger.info("Successfully connected to the Cloud SQL instance.")
         return conn
