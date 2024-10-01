@@ -21,9 +21,9 @@ def get_connection():
     try:
         logger.debug("Attempting to connect to Cloud SQL PostgreSQL instance.")
         
-        # Create a connection to the Cloud SQL PostgreSQL instance using PSC
+        # Create a connection to the Cloud SQL PostgreSQL instance using PUBLIC
         conn = connector.connect(
-            "<PROJECT-ID>:<REGION>:psc-instance",  # Cloud SQL instance name
+            "<PROJECT-ID>:<REGION>:main-instance",  # Cloud SQL instance name
             "pg8000",
             user="<user>",
             password="<passoword>",
