@@ -51,6 +51,29 @@ This project uses Terraform to set up Google Cloud Platform (GCP) infrastructure
    terraform apply
    ```
 
+6. Create a Private Service Connect endpoint:
+
+   ```bash
+   gcloud sql instances describe psc-instance --project <PROJECT-ID>
+   ```
+
+   ```bash
+   gcloud compute forwarding-rules create psc-service-attachment-link --address=internal-address --project=<PROJECT-ID> --region=us-central1 --network=nw1-vpc --target-service-attachment=<pscServiceAttachmentLink>
+   ```
+
+   ```bash
+   gcloud compute forwarding-rules describe psc-service-attachment-link --project <PROJECT-ID>  --region us-central1
+   ```  
+
+7. Configure a DNS managed zone and a DNS record: 
+   ```bash
+   gcloud dns managed-zones create cloud-sql-dns-zone --project=<PROJECT-ID> --description="DNS zone for the Cloud SQL instance" --dns-name=<DNS-ENTRY> --networks=nw1-vpc --visibility=private
+   ```
+
+   ```bash
+   gcloud dns record-sets create <DNS-ENTRY> --project=<PROJECT-ID> --type=A --rrdatas=10.10.1.10 --zone=cloud-sql-dns-zone
+   ```       
+
 ## Key Components
 
 - **VPC Network**: Creates a custom VPC named "nw1-vpc" with two subnets.
