@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application code
-COPY main.py .
+COPY main_privateip.py .
 
 # Make sure you have the necessary credentials for connecting to Cloud SQL
 # You might need to copy a service account key file if you're not using Workload Identity
@@ -22,4 +22,4 @@ COPY main.py .
 #ENV INSTANCE_CONNECTION_NAME="<PROJECT-ID>:<REGION>:psc-instance"
 
 # Run the application
-CMD ["python", "main.py"]
+CMD ["python", "main_privateip.py"]
