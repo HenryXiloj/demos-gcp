@@ -66,16 +66,6 @@ def get_connection():
         logger.error(f"Failed to connect to the Cloud SQL instance: {str(e)}")
         raise
 
-# Custom function to make a GET request
-#def make_get_request():
-#    url = 'https://springboot-cloudsql-run-815186990020.us-central1.run.app/api/v3'
-#    response = requests.get(url)#
-#
-#    if response.status_code == 200:
-#        print(f"GET request successful. Response: {response.json()}")
-#    else:
-#        print(f"GET request failed with status code {response.status_code}")
-
 # DAG definition
 with DAG(dag_id='gcs_to_cloud_sql_psc_test',
          catchup=False,
@@ -103,12 +93,6 @@ with DAG(dag_id='gcs_to_cloud_sql_psc_test',
         dag=dag
     )
 
-    # New Python operator task for GET request
-    #get_request_task = PythonOperator(
-    #    task_id='get_request_task',
-    #    python_callable=make_get_request,
-   #     dag=dag
-   # )
 
     # Dummy end task
     end = DummyOperator(
