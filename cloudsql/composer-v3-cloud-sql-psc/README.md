@@ -98,7 +98,7 @@ Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gs
 - `main.tf`: Configures the Cloud SQL instance with PSC connectivity.
 - `composer.tf`: Sets up the Google Cloud Composer environment.
 
-## Destroy configuration
+## Delete configuration
 
 1. Delete a DNS managed zone and a DNS record: 
    
@@ -114,7 +114,12 @@ Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gs
 
 ```bash
    gcloud compute forwarding-rules delete psc-service-attachment-link --region=us-central1  --project=<PROJECT-ID>
-```         
+```    
+3. Terraform destroy:
+
+```bash
+   terrafrom destroy -auto-approve
+```      
 
 ## Troubleshooting
 
