@@ -98,6 +98,24 @@ Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gs
 - `main.tf`: Configures the Cloud SQL instance with PSC connectivity.
 - `composer.tf`: Sets up the Google Cloud Composer environment.
 
+## Destroy configuration
+
+1. Delete a DNS managed zone and a DNS record: 
+   
+   ```bash
+   gcloud dns record-sets delete <DNS-ENTRY> --type=A --zone=cloud-sql-dns-zone
+   ``` 
+
+   ```bash
+   gcloud dns managed-zones delete cloud-sql-dns-zone --project=<PROJECT-ID>
+   ```
+   
+2. Delete a Private Service Connect endpoint:
+
+```bash
+   gcloud compute forwarding-rules delete psc-service-attachment-link --region=us-central1  --project=<PROJECT-ID>
+```         
+
 ## Troubleshooting
 
 If you encounter any issues:
@@ -122,38 +140,3 @@ For visual reference, please see the following images in your project documentat
 
 4. ![Image 4](path/to/image4.png)
    *Description of what Image 4 shows*
-
-## Contributing
-
-Contributions to this project are welcome. Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/AmazingFeature`)
-3. Make your changes
-4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-5. Push to the branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
-
-## License
-
-[MIT License](https://opensource.org/licenses/MIT)
-
-Copyright (c) [year] [fullname]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
