@@ -13,6 +13,13 @@ cloudsql/private-service-connect-PSC/terraform/.terraform.tfstate.lock.info
 cloudsql/private-service-connect-PSC/terraform/terraform.tfstate
 cloudsql/private-service-connect-PSC/terraform/terraform.tfstate.backup
 
+cloudsql/psa-publicIP/terraform/.terraform
+cloudsql/psa-publicIP/terraform/.terraform.lock.hcl
+cloudsql/psa-publicIP/terraform/.terraform.tfstate
+cloudsql/psa-publicIP/terraform/.terraform.tfstate.lock.info
+cloudsql/psa-publicIP/terraform/terraform.tfstate
+cloudsql/psa-publicIP/terraform/terraform.tfstate.backup
+
 cloudsql/private-service-access-PrivateIP-PublicIP/cloud-run-spring-boot3/HELP.md
 cloudsql/private-service-access-PrivateIP-PublicIP/cloud-run-spring-boot3/target/
 cloudsql/private-service-access-PrivateIP-PublicIP/cloud-run-spring-boot3/!.mvn/wrapper/maven-wrapper.jar
