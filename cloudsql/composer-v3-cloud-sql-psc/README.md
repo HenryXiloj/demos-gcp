@@ -160,16 +160,14 @@ If you encounter any issues:
 
 ## Images
 
-For visual reference, please see the following images in your project documentation:
+For visual reference:
 
-1. ![Image 1](path/to/image1.png)
-   *Description of what Image 1 shows*
+1. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img1.png?raw=true)
 
-2. ![Image 2](path/to/image2.png)
-   *Description of what Image 2 shows*
+2. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img2.png?raw=true)
 
-3. ![Image 3](path/to/image3.png)
-   *Description of what Image 3 shows*
+3. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img3.png?raw=true)
 
-4. ![Image 4](path/to/image4.png)
-   *Description of what Image 4 shows*
+4. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img4.png?raw=true)
+
+5. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img5.png?raw=true) 
