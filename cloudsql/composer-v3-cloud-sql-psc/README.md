@@ -162,7 +162,7 @@ If you encounter any issues:
 
 For visual reference:
 
-1. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img1.png?raw=true)
+1. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img1.PNG?raw=true?raw=true)
 
 2. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img2.png?raw=true)
 
