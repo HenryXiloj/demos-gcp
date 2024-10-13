@@ -74,14 +74,14 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    ```
        
 9. Add the network configuration in `composer.tf`: 
-  ```bash
-    network         = google_compute_network.nw1-vpc.id
-    subnetwork      = google_compute_subnetwork.nw1-subnet1.id
-  ```
+     ```bash
+       network         = google_compute_network.nw1-vpc.id
+       subnetwork      = google_compute_subnetwork.nw1-subnet1.id
+     ```
 10. Then run `terraform apply` again: 
-   ```bash
-   terraform apply -auto-approve
-   ```       
+      ```bash
+      terraform apply -auto-approve
+      ```       
 
 ## Composer Configuration
 
