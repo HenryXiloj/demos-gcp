@@ -26,8 +26,8 @@ resource "google_composer_environment" "test" {
     environment_size = "ENVIRONMENT_SIZE_MEDIUM"
 
     node_config {
-      network         = google_compute_network.nw1-vpc.id
-      subnetwork      = google_compute_subnetwork.nw1-subnet1.id
+      #network         = google_compute_network.nw1-vpc.id
+      #subnetwork      = google_compute_subnetwork.nw1-subnet1.id
       service_account = google_service_account.cloudsql_service_account.name
     }
   }
