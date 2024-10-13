@@ -151,11 +151,11 @@ Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gs
 ## Troubleshooting
 
 If you encounter any issues:
-
-1. Check the Airflow logs in the Composer environment.
-2. Verify that all resources have been created correctly in the Google Cloud Console.
-3. Ensure that the Cloud SQL Proxy binary is correctly uploaded and accessible.
-4. Double-check the IAM permissions for the Composer service account.
+1. Ensure comment networks config in first run terraform apply, otherwise you get network issue. 
+2. Check the Airflow logs in the Composer environment.
+3. Verify that all resources have been created correctly in the Google Cloud Console.
+4. Ensure that the Cloud SQL Proxy binary is correctly uploaded and accessible.
+5. Double-check the IAM permissions for the Composer service account.
 
 ## Images
 
