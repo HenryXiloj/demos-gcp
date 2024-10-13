@@ -1,4 +1,4 @@
-# Connecting Airflow 2 in Composer 3 to Cloud SQL via Private Service Connect (PSC)
+# Connecting Airflow 2 in Composer 3 to Cloud SQL via Private Service Connect (PSC) VPC Network.
 
 This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to a Cloud SQL instance using Private Service Connect (PSC). It uses Terraform to set up the necessary infrastructure and provides instructions for configuring and running the connection.
 
