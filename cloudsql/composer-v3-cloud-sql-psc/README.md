@@ -162,12 +162,18 @@ If you encounter any issues:
 
 For visual reference:
 
-1. ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img1.png?raw=true?raw=true)
+1.
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img1.png?raw=true?raw=true)
 
-2. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img2.png?raw=true)
+2.
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img2.png?raw=true?raw=true)
 
-3. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img3.png?raw=true)
+3.
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img3.png?raw=true?raw=true)
 
-4. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img4.png?raw=true)
+4.
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img4.png?raw=true?raw=true)
 
-5. ![alt text](https://github.com/HenryXiloj/demos-gcp/tree/main/cloudsql/composer-v3-cloud-sql-psc/blob/main/img5.png?raw=true) 
+5.
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img5.png?raw=true?raw=true)
+
