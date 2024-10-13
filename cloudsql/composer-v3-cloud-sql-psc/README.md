@@ -29,8 +29,14 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    sec_region     = "us-west1"
    sec_zone       = "us-west1-a"
    ```
+4. First, run `terraform apply` with the Composer 3 resource, but without the network configuration in `composer.tf`. It seems that Terraform may not have completed its internal setup, or there might be an issue related to Composer v3 on GCP. In step 9, add the network configuration.
 
-4. Initialize Terraform and apply the configuration:
+ ```bash
+    #network         = google_compute_network.nw1-vpc.id
+    #subnetwork      = google_compute_subnetwork.nw1-subnet1.id
+ ```
+    
+5. Initialize Terraform and apply the configuration:
    ```bash
    terraform init
    terraform fmt
@@ -39,12 +45,12 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    terraform apply -auto-approve
    ```
 
-5. Upload the Cloud SQL Proxy binary to a Google Cloud Storage bucket:
+6. Upload the Cloud SQL Proxy binary to a Google Cloud Storage bucket:
    ```bash
    gsutil cp cloud-sql-proxy gs://<my-bucket-name>
    ```
    
-6. Create a Private Service Connect endpoint:
+7. Create a Private Service Connect endpoint:
 
    ```bash
    gcloud sql instances describe psc-instance --project <PROJECT-ID>
@@ -58,13 +64,23 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    gcloud compute forwarding-rules describe psc-service-attachment-link --project <PROJECT-ID>  --region us-central1
    ```  
 
-7. Configure a DNS managed zone and a DNS record: 
+8. Configure a DNS managed zone and a DNS record: 
    ```bash
    gcloud dns managed-zones create cloud-sql-dns-zone --project=<PROJECT-ID> --description="DNS zone for the Cloud SQL instance" --dns-name=<DNS-ENTRY> --networks=nw1-vpc --visibility=private
    ```
 
    ```bash
    gcloud dns record-sets create <DNS-ENTRY> --project=<PROJECT-ID> --type=A --rrdatas=10.10.1.10 --zone=cloud-sql-dns-zone
+   ```
+       
+9. Add the network configuration in `composer.tf`: 
+  ```bash
+    network         = google_compute_network.nw1-vpc.id
+    subnetwork      = google_compute_subnetwork.nw1-subnet1.id
+  ```
+10. Then run `terraform apply` again: 
+   ```bash
+   terraform apply -auto-approve
    ```       
 
 ## Composer Configuration
