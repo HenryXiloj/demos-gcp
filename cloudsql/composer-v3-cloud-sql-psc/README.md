@@ -27,8 +27,8 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
 
 4. Update the `terraform.tfvars` file with your project details:
    ```hcl
-   project_id     = "your-project-id"
-   project_number = "your-project-number"
+   project_id     = "<my-project-id>"
+   project_number = "<my-project-number>"
    region         = "us-central1"
    zone           = "us-central1-a"
    sec_region     = "us-west1"
@@ -77,6 +77,17 @@ Composer v3 will automatically create a bucket with the following structure:
 ├── logs/
 └── plugins/
 ```
+
+## Python script configuration
+
+Go to: `resources/cloud_sql_proxy_psc_dag.py`
+
+1. Update the `cloud_sql_proxy_psc_dag.py` file with your project details:
+   ```bash
+   GCS_BUCKET_NAME = "<my-bucket>"
+   BINARY_NAME = "<my-bynary-name>" ## cloud-sql-proxy
+   INSTANCE_CONNECTION_NAME = "<project-id>:<my-region>:<instance-name>" 
+   ```
 
 Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gsutil` or manually through the Google Cloud Console.
 

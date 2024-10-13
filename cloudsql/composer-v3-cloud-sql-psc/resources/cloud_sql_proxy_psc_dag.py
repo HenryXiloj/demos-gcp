@@ -24,9 +24,9 @@ logger.addHandler(handler)
 CLOUD_SQL_PROXY_PATH = '/tmp/proxy'
 CLOUD_SQL_PROXY_BINARY = f'{CLOUD_SQL_PROXY_PATH}/cloud-sql-proxy'  # Binary file path
 LOG_FILE_PATH = f'{CLOUD_SQL_PROXY_PATH}/cloud-sql-proxy.log'
-GCS_BUCKET_NAME = 'gcs_cloud_sql_proxy_v2_13_0'
-BINARY_NAME = "cloud-sql-proxy"
-INSTANCE_CONNECTION_NAME = 'terraform-workspace-437404:us-central1:psc-instance'
+GCS_BUCKET_NAME = "<my-bucket>"
+BINARY_NAME = "<my-bynary-name>" ## cloud-sql-proxy
+INSTANCE_CONNECTION_NAME = "<project-id>:<my-region>:<instance-name>" 
 DB_NAME = 'my-database3'
 DB_USER = 'henry'
 DB_PASSWORD = 'hxi123'
