@@ -19,13 +19,8 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    curl "$URL/cloud-sql-proxy.linux.amd64" -o cloud-sql-proxy
    chmod +x cloud-sql-proxy
    ```
-
-3. Upload the Cloud SQL Proxy binary to a Google Cloud Storage bucket:
-   ```bash
-   gsutil cp cloud-sql-proxy gs://<my-bucket-name>
-   ```
-
-4. Update the `terraform.tfvars` file with your project details:
+   
+3. Update the `terraform.tfvars` file with your project details:
    ```hcl
    project_id     = "<my-project-id>"
    project_number = "<my-project-number>"
@@ -35,7 +30,7 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    sec_zone       = "us-west1-a"
    ```
 
-5. Initialize Terraform and apply the configuration:
+4. Initialize Terraform and apply the configuration:
    ```bash
    terraform init
    terraform fmt
@@ -44,6 +39,11 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    terraform apply -auto-approve
    ```
 
+5. Upload the Cloud SQL Proxy binary to a Google Cloud Storage bucket:
+   ```bash
+   gsutil cp cloud-sql-proxy gs://<my-bucket-name>
+   ```
+   
 6. Create a Private Service Connect endpoint:
 
    ```bash
