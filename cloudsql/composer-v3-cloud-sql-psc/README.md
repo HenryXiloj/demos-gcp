@@ -104,6 +104,7 @@ Go to: `resources/cloud_sql_proxy_psc_dag.py`
    BINARY_NAME = "<my-bynary-name>" ## cloud-sql-proxy
    INSTANCE_CONNECTION_NAME = "<project-id>:<my-region>:<instance-name>" 
    ```
+## Upload `cloud_sql_proxy_psc_dag.py`
 
 Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gsutil` or manually through the Google Cloud Console.
 
