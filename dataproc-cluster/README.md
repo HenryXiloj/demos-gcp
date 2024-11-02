@@ -1,179 +1,146 @@
-# Connecting Airflow 2 in Composer 3 to Cloud SQL via Private Service Connect (PSC) VPC Network.
+# Terraform Google Cloud Dataproc Project
 
-This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to a Cloud SQL instance using Private Service Connect (PSC). It uses Terraform to set up the necessary infrastructure and provides instructions for configuring and running the connection.
+This repository contains Terraform configurations for deploying and managing a Google Cloud Dataproc cluster along with associated resources including BigQuery datasets, Cloud Storage buckets, networking components, and various types of Dataproc jobs.
 
 ## Prerequisites
 
-- Google Cloud Platform account
-- Terraform installed
-- `gcloud` CLI installed and configured
-- Access to Google Cloud Composer and Cloud SQL
-
-## Setup
-
-1. Clone this repository to your local machine.
-
-2. Download the Cloud SQL Proxy binary:
-   ```bash
-   URL="https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.13.0"
-   curl "$URL/cloud-sql-proxy.linux.amd64" -o cloud-sql-proxy
-   chmod +x cloud-sql-proxy
-   ```
-   
-3. Update the `terraform.tfvars` file with your project details:
-   ```hcl
-   project_id     = "<my-project-id>"
-   project_number = "<my-project-number>"
-   region         = "us-central1"
-   zone           = "us-central1-a"
-   sec_region     = "us-west1"
-   sec_zone       = "us-west1-a"
-   ```
-4. First, run `terraform apply` with the Composer 3 resource, but without the network configuration in `composer.tf`. It seems that Terraform may not have completed its internal setup, or there might be an issue related to Composer v3 on GCP. In step 9, add the network configuration.
-
- ```bash
-    #network         = google_compute_network.nw1-vpc.id
-    #subnetwork      = google_compute_subnetwork.nw1-subnet1.id
- ```
-    
-5. Initialize Terraform and apply the configuration:
-   ```bash
-   terraform init
-   terraform fmt
-   terraform validate
-   terraform plan
-   terraform apply -auto-approve
-   ```
-
-6. Upload the Cloud SQL Proxy binary to a Google Cloud Storage bucket:
-   ```bash
-   gsutil cp cloud-sql-proxy gs://<my-bucket-name>
-   ```
-   
-7. Create a Private Service Connect endpoint:
-
-   ```bash
-   gcloud sql instances describe psc-instance --project <PROJECT-ID>
-   ```
-
-   ```bash
-   gcloud compute forwarding-rules create psc-service-attachment-link --address=internal-address --project=<PROJECT-ID> --region=us-central1 --network=nw1-vpc --target-service-attachment=<pscServiceAttachmentLink>
-   ```
-
-   ```bash
-   gcloud compute forwarding-rules describe psc-service-attachment-link --project <PROJECT-ID>  --region us-central1
-   ```  
-
-8. Configure a DNS managed zone and a DNS record: 
-   ```bash
-   gcloud dns managed-zones create cloud-sql-dns-zone --project=<PROJECT-ID> --description="DNS zone for the Cloud SQL instance" --dns-name=<DNS-ENTRY> --networks=nw1-vpc --visibility=private
-   ```
-
-   ```bash
-   gcloud dns record-sets create <DNS-ENTRY> --project=<PROJECT-ID> --type=A --rrdatas=10.10.1.10 --zone=cloud-sql-dns-zone
-   ```
-       
-9. Add the network configuration in `composer.tf`: 
-     ```bash
-       network         = google_compute_network.nw1-vpc.id
-       subnetwork      = google_compute_subnetwork.nw1-subnet1.id
-     ```
-10. Then run `terraform apply` again: 
-      ```bash
-      terraform apply -auto-approve
-      ```       
-
-## Composer Configuration
-
-Composer v3 will automatically create a bucket with the following structure:
-```
-<region>-<my-composer-name-ID>-bucket/
-├── dags/
-├── data/
-├── logs/
-└── plugins/
-```
-
-## Python script configuration
-
-Go to: `resources/cloud_sql_proxy_psc_dag.py`
-
-1. Update the `cloud_sql_proxy_psc_dag.py` file with your project details:
-   ```bash
-   GCS_BUCKET_NAME = "<my-bucket>"
-   BINARY_NAME = "<my-bynary-name>" ## cloud-sql-proxy
-   INSTANCE_CONNECTION_NAME = "<project-id>:<my-region>:<instance-name>" 
-   ```
-## Upload `cloud_sql_proxy_psc_dag.py`
-
-Upload your `cloud_sql_proxy_psc_dag.py` file to the `dags/` directory using `gsutil` or manually through the Google Cloud Console.
-
-## Running the DAG
-
-1. Access the Airflow 2 UI through Google Cloud Composer.
-2. Locate your uploaded DAG in the DAGs list.
-3. Enable and trigger the DAG to run.
+- [Terraform](https://www.terraform.io/downloads.html) (v1.0.0 or higher)
+- [Google Cloud SDK](https://cloud.google.com/sdk/docs/install)
+- A Google Cloud Project with billing enabled
+- Appropriate IAM permissions to create and manage resources
 
 ## Project Structure
 
-- `provider.tf`: Defines the required providers and their versions.
-- `variable.tf`: Declares variables used throughout the Terraform configuration.
-- `terraform.tfvars`: Sets values for the declared variables.
-- `network.tf`: Configures the VPC network and subnets.
-- `compute.tf`: Sets up compute resources, including internal IP addresses.
-- `iam.tf`: Manages IAM roles and service accounts.
-- `bucket.tf`: Creates a Google Cloud Storage bucket for the Cloud SQL Proxy binary.
-- `main.tf`: Configures the Cloud SQL instance with PSC connectivity.
-- `composer.tf`: Sets up the Google Cloud Composer environment.
+```
+.
+├── README.md
+├── provider.tf        # Provider configuration
+├── variables.tf       # Variable definitions
+├── terraform.tfvars   # Variable values
+├── iam.tf            # IAM and API configurations
+├── network.tf        # VPC and networking resources
+├── bucket.tf         # Cloud Storage configurations
+├── bigquery.tf       # BigQuery datasets and tables
+├── dataproc.tf       # Dataproc cluster configuration
+└── jobs.tf           # Dataproc job definitions
+```
 
-## Delete configuration
+## Resource Components
 
-1. Delete a DNS managed zone and a DNS record: 
-   
-   ```bash
-   gcloud dns record-sets delete <DNS-ENTRY> --type=A --zone=cloud-sql-dns-zone
-   ``` 
+### 1. IAM and API Configuration (iam.tf)
+- Enables required Google Cloud APIs
+- Creates service account for Dataproc cluster
+- Assigns necessary IAM roles
 
-   ```bash
-   gcloud dns managed-zones delete cloud-sql-dns-zone --project=<PROJECT-ID>
-   ```
-   
-2. Delete a Private Service Connect endpoint:
+### 2. Networking (network.tf)
+- Creates VPC network with custom subnet
+- Configures Cloud NAT for internet access
+- Sets up firewall rules for:
+  - Internal traffic
+  - SSH via Identity-Aware Proxy (IAP)
+  - Egress internet access
 
+### 3. Storage (bucket.tf)
+- Creates storage buckets for:
+  - Dataproc staging
+  - ETL scripts and resources
+- Uploads required scripts and data files
+
+### 4. BigQuery (bigquery.tf)
+- Creates dataset and tables
+- Configures data loading jobs
+- Manages table schemas
+
+### 5. Dataproc (dataproc.tf)
+- Deploys a Dataproc cluster with:
+  - 1 master node (n2-standard-4)
+  - 2 worker nodes (n2-standard-4)
+  - Custom initialization actions
+  - Network isolation
+
+### 6. Jobs (jobs.tf)
+Configures various types of Dataproc jobs:
+- PySpark jobs
+- Spark jobs
+- Hadoop jobs
+- Hive jobs
+- Pig jobs
+- SparkSQL jobs
+
+## Variables
+
+Key variables defined in `variables.tf` and set in `terraform.tfvars`:
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| project_id | Google Cloud Project ID | - |
+| project_number | Google Cloud Project Number | - |
+| region | Primary region for resources | us-central1 |
+| zone | Primary zone for resources | us-central1-a |
+| sec_region | Secondary region | us-west1 |
+| sec_zone | Secondary zone | us-west1-a |
+
+## Usage
+
+1. Clone the repository:
 ```bash
-   gcloud compute forwarding-rules delete psc-service-attachment-link --region=us-central1  --project=<PROJECT-ID>
-```    
-3. Terraform destroy:
+git clone <repository-url>
+cd <repository-name>
+```
 
+2. Initialize Terraform:
 ```bash
-   terrafrom destroy -auto-approve
-```      
+terraform init
+```
 
-## Troubleshooting
+3. Review the planned changes:
+```bash
+terraform plan
+```
 
-If you encounter any issues:
-1. Ensure comment networks config in first run terraform apply, otherwise you get network issue. 
-2. Check the Airflow logs in the Composer environment.
-3. Verify that all resources have been created correctly in the Google Cloud Console.
-4. Ensure that the Cloud SQL Proxy binary is correctly uploaded and accessible.
-5. Double-check the IAM permissions for the Composer service account.
+4. Apply the configuration:
+```bash
+terraform apply
+```
 
-## Images
+5. To destroy resources:
+```bash
+terraform destroy
+```
 
-For visual reference:
+## Important Notes
 
-1.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img1.png?raw=true?raw=true)
+- The Dataproc cluster is configured with internal IP only
+- All resources are deployed in a private VPC
+- Cloud NAT is configured for internet access
+- The project uses uniform bucket-level access for Cloud Storage
+- BigQuery tables have deletion protection disabled (for development purposes)
 
-2.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img2.png?raw=true?raw=true)
+## Security Considerations
 
-3.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img3.png?raw=true?raw=true)
+- All resources are deployed in a private VPC
+- SSH access is only available through IAP
+- Service accounts have minimum required permissions
+- Internal-only IP addresses are used where possible
 
-4.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img4.png?raw=true?raw=true)
+## Resource Dependencies
 
-5.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img5.png?raw=true?raw=true)
+The deployment follows this dependency order:
+1. APIs and IAM configurations
+2. Networking components
+3. Storage buckets
+4. BigQuery resources
+5. Dataproc cluster
+6. Dataproc jobs
 
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
+
+## License
+
+[Specify your license here]
