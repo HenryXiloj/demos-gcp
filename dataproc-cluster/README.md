@@ -96,8 +96,8 @@ Key variables defined in `variables.tf` and set in `terraform.tfvars`:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| project_id | Google Cloud Project ID | <MY-PROJECT-ID> |
-| project_number | Google Cloud Project Number | <MY-PROJECT-NUMBER> |
+| project_id | Google Cloud Project ID | MY-PROJECT-ID |
+| project_number | Google Cloud Project Number | MY-PROJECT-NUMBER |
 | region | Primary region for resources | us-central1 |
 | zone | Primary zone for resources | us-central1-a |
 | sec_region | Secondary region | us-west1 |
