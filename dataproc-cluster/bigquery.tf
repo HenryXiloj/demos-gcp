@@ -36,7 +36,7 @@ EOF
 # Load CSV data into BigQuery table1
 resource "google_bigquery_job" "load_table1" {
   depends_on = [google_storage_bucket_object.scripts, google_bigquery_table.table1]
-  job_id     = "load-table1-job"
+  job_id     = "load-table1-job1"
   project    = var.project_id
   location   = var.region
 
@@ -54,6 +54,7 @@ resource "google_bigquery_job" "load_table1" {
     write_disposition = "WRITE_TRUNCATE"
 
   }
+  
 
 }
 

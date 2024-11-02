@@ -20,6 +20,54 @@ resource "google_dataproc_job" "pyspark_bq" {
   }
 }
 
+resource "google_dataproc_job" "spark_random_numbers" {
+  depends_on = [google_dataproc_cluster.mycluster,
+  google_storage_bucket_object.scripts]
+  region = google_dataproc_cluster.mycluster.region
+  placement {
+    cluster_name = google_dataproc_cluster.mycluster.name
+  }
+  labels = {
+    job = "spark_random_numbers"
+  }
+  pyspark_config {
+    main_python_file_uri = "gs://${google_storage_bucket.static.name}/spark_random_numbers.py"
+
+    # Pass the bucket name as an argument
+    args = [google_storage_bucket.static.name]
+  }
+}
+
+# Submit a spark job to the cluster
+resource "google_dataproc_job" "spark" {
+   depends_on = [google_dataproc_cluster.mycluster,
+  google_storage_bucket_object.scripts]
+  region       = google_dataproc_cluster.mycluster.region
+  force_delete = true
+  placement {
+    cluster_name = google_dataproc_cluster.mycluster.name
+  }
+
+  labels = {
+    job = "spark"
+  }
+  spark_config {
+    main_class    = "org.apache.spark.examples.SparkPi"
+    jar_file_uris = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
+    args          = ["1000"]
+
+    properties = {
+      "spark.logConf" = "true"
+    }
+
+    logging_config {
+      driver_log_levels = {
+        "root" = "INFO"
+      }
+    }
+  }
+}
+
 resource "google_dataproc_job" "hadoop" {
   depends_on = [google_dataproc_cluster.mycluster,
   google_storage_bucket_object.scripts]
@@ -38,24 +86,6 @@ resource "google_dataproc_job" "hadoop" {
       "file:///usr/lib/spark/NOTICE",
       "gs://${google_dataproc_cluster.mycluster.cluster_config[0].bucket}/hadoopjob_output",
     ]
-  }
-}
-
-resource "google_dataproc_job" "spark_random_numbers" {
-  depends_on = [google_dataproc_cluster.mycluster,
-  google_storage_bucket_object.scripts]
-  region = google_dataproc_cluster.mycluster.region
-  placement {
-    cluster_name = google_dataproc_cluster.mycluster.name
-  }
-  labels = {
-    job = "spark_random_numbers"
-  }
-  pyspark_config {
-    main_python_file_uri = "gs://${google_storage_bucket.static.name}/spark_random_numbers.py"
-
-    # Pass the bucket name as an argument
-    args = [google_storage_bucket.static.name]
   }
 }
 
