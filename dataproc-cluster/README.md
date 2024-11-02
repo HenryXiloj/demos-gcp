@@ -96,8 +96,8 @@ Key variables defined in `variables.tf` and set in `terraform.tfvars`:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| project_id | Google Cloud Project ID | terraform-workspace-437404 |
-| project_number | Google Cloud Project Number | 1064430560844 |
+| project_id | Google Cloud Project ID | <MY-PROJECT-ID> |
+| project_number | Google Cloud Project Number | <MY-PROJECT-NUMBER> |
 | region | Primary region for resources | us-central1 |
 | zone | Primary zone for resources | us-central1-a |
 | sec_region | Secondary region | us-west1 |
@@ -135,12 +135,12 @@ terraform apply
 
    b. Check the BigQuery job details:
    ```bash
-   bq show --project_id=terraform-workspace-437404 --location=us-central1 -j load-table1-job1
+   bq show --project_id=<MY-PROJECT-ID> --location=<MY-LOCATION> -j load-table1-job1
    ```
 
    c. Remove the BigQuery job:
    ```bash
-   bq rm -j --location=us-central1 --project_id=terraform-workspace-437404 load-table1-job1
+   bq rm -j --location=<MY-LOCATION> --project_id=<MY-PROJECT-ID> load-table1-job1
    ```
 
    Note: BigQuery jobs must be manually cleaned up before destroying the infrastructure as they are not automatically removed by Terraform.
@@ -194,22 +194,6 @@ Common issues and solutions:
 3. Permission Issues:
    - Problem: Insufficient permissions for service account
    - Solution: Verify IAM roles are correctly assigned
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Create a new Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details
-
-## Maintainers
-
-[Your Name/Team]
 
 ## Acknowledgments
 
