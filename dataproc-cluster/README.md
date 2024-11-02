@@ -16,7 +16,7 @@ This repository contains Terraform configurations for deploying and managing a G
 ├── README.md
 ├── provider.tf        # Provider configuration
 ├── variables.tf       # Variable definitions
-├── terraform.tfvars   # Variable values
+├── terraform.tfvars   # Variable values <MY-PROJECT-ID> <MY-PROJECT-NUMBER>
 ├── iam.tf            # IAM and API configurations
 ├── network.tf        # VPC and networking resources
 ├── bucket.tf         # Cloud Storage configurations
