@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import col
 import sys
 
-# Capture the bucket name from the first argument
+# Capture the project_id  from the first argument
 project_id = sys.argv[1]
 
 # Initialize Spark session with BigQuery support
