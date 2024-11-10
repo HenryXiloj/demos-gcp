@@ -183,15 +183,18 @@ The deployment follows this dependency order:
 
 Common issues and solutions:
 
-1. BigQuery Job Deletion:
+1. Count 'dp-service-account-id@terraform-workspace-437404.iam.gserviceaccount.com', missing permissions:
+   - if you get above error, then run again `terraform apply`
+     
+2. BigQuery Job Deletion:
    - Error: Cannot destroy resources due to existing BigQuery jobs
    - Solution: Use the bq command-line tool to remove jobs manually
 
-2. Networking:
+3. Networking:
    - Issue: Dataproc cluster cannot access internet
    - Solution: Verify Cloud NAT configuration and firewall rules
 
-3. Permission Issues:
+4. Permission Issues:
    - Problem: Insufficient permissions for service account
    - Solution: Verify IAM roles are correctly assigned
 
