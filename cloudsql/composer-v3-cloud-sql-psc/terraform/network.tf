@@ -17,42 +17,12 @@ resource "google_compute_subnetwork" "nw1-subnet1" {
   private_ip_google_access = true # Needed to access Google services (like Cloud SQL) without a public IP.
 }
 
-# Subnet 2: Similar to Subnet 1 but in a secondary region. This provides multi-region redundancy or support.
-resource "google_compute_subnetwork" "nw1-subnet2" {
-  name                     = "nw1-vpc-sub2-${var.sec_region}"
-  network                  = google_compute_network.nw1-vpc.id
-  ip_cidr_range            = "10.10.2.0/24" # Define a different private IP range in the second region.
-  region                   = var.sec_region
-  private_ip_google_access = true # Also needed in this region for accessing Google services privately.
-}
-
-# Firewall Rule (SSH and ICMP): Needed to allow SSH access and ICMP (ping) for specific IP ranges.
-# Allows access to virtual machines via SSH and pings from trusted IP addresses (source_ranges).
-resource "google_compute_firewall" "nw1-ssh-icmp-allow" {
-  name    = "nw1-vpc-ssh-allow"
-  network = google_compute_network.nw1-vpc.id
-
-  # Allow ICMP for network diagnostic purposes.
-  allow {
-    protocol = "icmp"
-  }
-
-  # Allow SSH access on port 22 to a specified IP range.
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-  }
-
-  # Restrict access to a specific IP address or range for security.
-  source_ranges = ["39.33.11.48/32"] # Adjust this to your IP or corporate network range.
-  target_tags   = ["nw1-vpc-ssh-allow"]
-  priority      = 1000 # Lower number means higher priority.
-}
 
 # Firewall Rule (Internal Traffic): Allows unrestricted internal traffic (both TCP and UDP) within the VPC.
 # Ensures that all internal communications across subnets can occur without restriction.
 resource "google_compute_firewall" "nw1-internal-allow" {
   name    = "nw1-vpc-internal-allow"
+  project = var.project_id
   network = google_compute_network.nw1-vpc.id
 
   # Allow ICMP for internal network diagnostics.
@@ -72,29 +42,37 @@ resource "google_compute_firewall" "nw1-internal-allow" {
 
   # Define the IP range for internal traffic (your entire VPC).
   source_ranges = ["10.10.0.0/16"] # Internal range covering all subnets within the VPC.
-  priority      = 1100             # Set a priority slightly lower than the SSH rule.
+  priority      = 1100
 }
 
-# Firewall Rule (IAP Traffic): Required for IAP access to Google services, including Cloud SQL.
-# Allows traffic from Google’s IAP proxy IP range (35.235.240.0/20) to access resources.
-resource "google_compute_firewall" "nw1-iap-allow" {
-  name    = "nw1-vpc-iap-allow"
+resource "google_compute_firewall" "allow_postgres_vpc" {
+  name    = "allow-postgres-vpc"
+  project = var.project_id
   network = google_compute_network.nw1-vpc.id
 
-  # Allow ICMP traffic from Google IAP proxy range.
-  allow {
-    protocol = "icmp"
-  }
-
-  # Allow TCP traffic on all ports from Google IAP proxy range for private access.
   allow {
     protocol = "tcp"
-    ports    = ["0-65535"]
+    ports    = ["5432", "3307", "3306"]
   }
 
-  # Source range for Google IAP traffic.
-  source_ranges = ["35.235.240.0/20"] # Specific to Google’s IAP service.
-  priority      = 1200                # Set a priority for IAP traffic.
+  source_ranges = ["10.10.0.0/16", "100.64.0.0/10"] # Cover both internal and Airflow worker traffic
+  priority      = 900                               # Ensure it's applied over deny-all rules
+  direction     = "INGRESS"
+}
+
+resource "google_compute_firewall" "allow_sql_proxy_egress" {
+  name    = "allow-sql-proxy-egress"
+  project = var.project_id
+  network = google_compute_network.nw1-vpc.id
+
+  allow {
+    protocol = "tcp"
+    ports    = ["5432", "3307", "3306"] # Allow egress on 3307 for Cloud SQL Proxy
+  }
+
+  direction          = "EGRESS"
+  destination_ranges = ["10.10.0.0/16", "100.64.0.0/10"] # Cloud SQL's internal IP range
+  priority           = 1000
 }
 
 # Global IP Address for VPC Peering: Used to reserve a range of IP addresses for VPC peering with Google services.
