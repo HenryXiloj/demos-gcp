@@ -9,18 +9,19 @@ resource "google_dns_managed_zone" "peering_zone" {
 
   private_visibility_config {
     networks {
-      network_url = "projects/terraform-workspace-437404/global/networks/nw1-vpc"
+      network_url = "projects/${var.project_id}/global/networks/nw1-vpc"
     }
   }
 
   peering_config {
     target_network {
-      network_url = "projects/gcp-project1-442623/global/networks/nw1-vpc"
+      network_url = "projects/${var.project_id_2}/global/networks/nw1-vpc"
     }
   }
 }
 
 resource "google_compute_vpn_gateway" "vpn_gateway" {
+  depends_on = [google_compute_network.nw1-vpc]
   name        = "vpn-1-${var.project_id}"
   description = "vpn-1-${var.project_id}"
   network     = "projects/${var.project_id}/global/networks/nw1-vpc"
