@@ -1,4 +1,5 @@
 resource "google_compute_vpn_gateway" "vpn_gateway" {
+  depends_on = [google_compute_network.nw1-vpc]
   name        = "vpn-1-${var.project_id}"
   description = "vpn-1-${var.project_id}"
   network     = "projects/${var.project_id}/global/networks/nw1-vpc"
@@ -52,7 +53,7 @@ resource "google_compute_vpn_tunnel" "vpn_tunnel" {
 }
 
 resource "google_compute_route" "vpn_route" {
-  depends_on = [google_compute_vpn_tunnel.vpn_tunnel] # Ensure VPN tunnel is ready
+   depends_on          = [google_compute_vpn_tunnel.vpn_tunnel, google_compute_network.nw1-vpc] # Ensure VPN tunnel is ready
   name                  = "vpn-tunnel-1-${var.project_id}-route-1"
   description           = "Route for VPN tunnel"
   network               = "projects/${var.project_id}/global/networks/nw1-vpc"
