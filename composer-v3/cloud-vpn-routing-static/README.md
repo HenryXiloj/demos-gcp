@@ -13,7 +13,7 @@ This repository includes:
 - **Cloud VPN (Static Routing)**
 
 Additionally, the `resources` folder contains the following scripts:
-- `check_worker_ip_dag.py`: Checks IP resolution using `nslookup` and `telnet`.
+- `check_worker_ip_dag.py`: Checks IP resolution using `nslookup` and `telnet` please chage `<DNS_NAME>` into py script before run, you can find `<DNS_NAME>` Cloud SQL PSC instance.
 - `cloud_sql_connector_psc_dag.py`: Connects to a Cloud SQL PSC instance in the same project via the Cloud SQL connector.
 - `cloud_sql_connector_psc_dag2.py`: Connects to a Cloud SQL PSC instance in a remote project using DNS peering and Cloud VPN static routes.
 

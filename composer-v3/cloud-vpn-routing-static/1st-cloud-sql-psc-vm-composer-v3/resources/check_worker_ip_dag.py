@@ -14,6 +14,8 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+DNS_ENTRY = "<DNS_NAME>"
+
 # Define default_args for DAG
 default_args = {
     'owner': 'airflow',
@@ -77,7 +79,7 @@ def check_worker_info_and_connectivity():
         logger.info(f"Worker Operating System: {os_name} {os_version}")
 
          # Resolve DNS for the PSC endpoint
-        psc_dns_name = "413f57e34f15.tslhv9t6fxpt.us-central1.sql.goog."  # Cloud SQL PSC DNS name
+        psc_dns_name = DNS_ENTRY  # Cloud SQL PSC DNS name
         resolved_ip = resolve_dns(psc_dns_name)
 
         if not resolved_ip:
