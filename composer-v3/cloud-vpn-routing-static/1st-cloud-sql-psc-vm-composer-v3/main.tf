@@ -93,5 +93,6 @@ resource "google_compute_instance" "psc_test_vm" {
     sudo apt-get update
     sudo apt-get install -y dnsutils net-tools telnet
     sudo apt-get install -y postgresql-client
+    sudo apt-get install dnsutils -y
   EOT
 }
