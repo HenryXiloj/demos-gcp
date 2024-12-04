@@ -98,7 +98,7 @@ Initialize and apply Terraform configurations for each project:
    ```
 
 ### Cloud VPN Dynamic setup 
-    Seems until Dec 2024 not support gcloud command not support terraform neither for this reason, we can do manually from gcp console. please follow the below steps if you BGP Sessions works you can see similiar below.
+Seems until Dec 2024 not support gcloud command and not support terraform neither, we can do manually from gcp console. please follow the below steps if you BGP Sessions works you can see similiar below.
 
 
 1. **Cloud Router 1st-cloud-sql-psc-vm-composer-v3**
