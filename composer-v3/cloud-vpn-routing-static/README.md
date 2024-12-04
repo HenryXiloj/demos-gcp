@@ -199,4 +199,8 @@ Initialize and apply Terraform configurations for each project:
 
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img7.png?raw=true?raw=true)
 
+## References
+https://cloud.google.com/dns/docs/zones/peering-zones#gcloud
+https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#configure-dns
+
    
