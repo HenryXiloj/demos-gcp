@@ -181,15 +181,15 @@ Initialize and apply Terraform configurations for each project:
 
 For visual reference:
 
-1. Home
+1. **Home**  
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img1.png?raw=true?raw=true)
 
-2. Cloud SQL PSC Host conexion 
+2. **Cloud SQL PSC Host conexion** 
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img2.png?raw=true?raw=true)
 
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img3.png?raw=true?raw=true)
 
-3. Cloud SQL PSC Remote conexion 
+3. **Cloud SQL PSC Remote conexion** 
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img4.png?raw=true?raw=true)
 
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img5.png?raw=true?raw=true)
