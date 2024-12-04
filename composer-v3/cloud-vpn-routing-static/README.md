@@ -178,5 +178,22 @@ Initialize and apply Terraform configurations for each project:
    Definitions for variables used across the Terraform configuration files.
 
 
+## Images
+
+For visual reference:
+
+1. Home
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img1.png?raw=true?raw=true)
+
+2. Cloud SQL PSC Host conexion 
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img2.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img3.png?raw=true?raw=true)
+
+3. Cloud SQL PSC Remote conexion 
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img4.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img5.png?raw=true?raw=true)
+
 
    
