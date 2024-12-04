@@ -219,6 +219,6 @@ Seems until Dec 2024 not support gcloud command and not support terraform neithe
 
 ## Test VM instance
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img5.png?raw=true?raw=true)
-
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img6.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img7.png?raw=true?raw=true)

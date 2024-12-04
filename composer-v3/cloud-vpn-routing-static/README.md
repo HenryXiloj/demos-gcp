@@ -195,8 +195,8 @@ Initialize and apply Terraform configurations for each project:
 
 ## Test VM instance
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img5.png?raw=true?raw=true)
-
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img6.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img7.png?raw=true?raw=true)
 
    
