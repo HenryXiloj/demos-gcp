@@ -1,4 +1,4 @@
-resource "google_compute_vpn_gateway" "vpn_gateway" {
+/* resource "google_compute_vpn_gateway" "vpn_gateway" {
   depends_on = [google_compute_network.nw1-vpc]
   name        = "vpn-1-${var.project_id}"
   description = "vpn-1-${var.project_id}"
@@ -61,3 +61,4 @@ resource "google_compute_route" "vpn_route" {
   dest_range            = var.destination_range_in_peer_first_GCP_project # Destination range in peer GCP project
   next_hop_vpn_tunnel   = google_compute_vpn_tunnel.vpn_tunnel.id
 }
+ */

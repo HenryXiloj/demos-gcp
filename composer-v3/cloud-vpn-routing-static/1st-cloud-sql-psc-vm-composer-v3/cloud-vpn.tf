@@ -1,4 +1,4 @@
-resource "google_dns_managed_zone" "peering_zone" {
+/* resource "google_dns_managed_zone" "peering_zone" {
   depends_on = [google_compute_network.nw1-vpc]
 
   name        = "manual-sql-zone"
@@ -83,3 +83,4 @@ resource "google_compute_route" "vpn_route" {
   dest_range          = var.destination_range_in_peer_second_GCP_project # Destination range in peer GCP project
   next_hop_vpn_tunnel = google_compute_vpn_tunnel.vpn_tunnel.id
 }
+ */
