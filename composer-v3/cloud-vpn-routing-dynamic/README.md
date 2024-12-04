@@ -10,18 +10,16 @@ This repository includes:
 - **Cloud SQL Private Service Connect (PSC)**
 - **VM instances**
 - **DNS Peering**
-- **Cloud VPN (Static Routing)**
 
 Additionally, the `resources` folder contains the following scripts:
 - `check_worker_ip_dag.py`: Checks IP resolution using `nslookup` and `telnet` please change `<DNS_NAME>` into py script, you can find `<DNS_NAME>` Cloud SQL PSC instance.
 - `cloud_sql_connector_psc_dag.py`: Connects to a Cloud SQL PSC instance in the same project via the Cloud SQL connector.
-- `cloud_sql_connector_psc_dag2.py`: Connects to a Cloud SQL PSC instance in a remote project using DNS peering and Cloud VPN static routes.
+- `cloud_sql_connector_psc_dag2.py`: Connects to a Cloud SQL PSC instance in a remote project using DNS peering and Cloud VPN dynamic routes.
 
 ### 2nd-cloud-sql-psc-vm
 This repository includes:
 - **Cloud SQL Private Service Connect (PSC)**
 - **VM instances**
-- **Cloud VPN (Static Routing)**
 
 This configuration focuses on connecting Composer-v3/VMs with remote cloud SQL PSC.
 
@@ -50,9 +48,8 @@ project_id     = "<PROJECT_ID>"
 ### First Run
 
 #### Cloud VPN Setup
-Comment out the Cloud VPN configurations initially. External IP addresses are required for VPN tunnel creation in both projects.
-1. **[cloud-vpn.tf](./1st-cloud-sql-psc-vm-composer-v3/cloud-vpn.tf)** 
-2. **[cloud-vpn.tf](./2nd-cloud-sql-psc-vm/cloud-vpn.tf)**  
+Comment out the DNS peering configurations initially. GCP Network for 2nd project is is required.
+1. **[dns-peering.tf](./1st-cloud-sql-psc-vm-composer-v3/dns-peering.tf)** 
 
 #### Run Terraform Commands
 Initialize and apply Terraform configurations for each project:
@@ -77,27 +74,8 @@ Initialize and apply Terraform configurations for each project:
 ### Second Run
 
 ### Enable Cloud VPN
-Uncomment the Cloud VPN configurations (`cloud-vpn.tf`) in both projects.
-1. **[cloud-vpn.tf](./1st-cloud-sql-psc-vm-composer-v3/cloud-vpn.tf)** 
-2. **[cloud-vpn.tf](./2nd-cloud-sql-psc-vm/cloud-vpn.tf)**  
-
-### Update `terraform.tfvars`
-
-#### For `1st-cloud-sql-psc-vm-composer-v3`:
-```text
-static_peer_second_GCP_project_IP = "<EXTERNAL_IP_ADDRESS_OF_SECOND_PROJECT>"
-```
-
-### For `2nd-cloud-sql-psc-vm`:
-```text
-static_peer_first_GCP_project_IP = "<EXTERNAL_IP_ADDRESS_OF_FIRST_PROJECT>"
-```
-
-### Additional Updates
-If subnet ranges are changed, update these variables:
-
-- `static_peer_second_GCP_project_IP` in `1st-cloud-sql-psc-vm-composer-v3`
-- `destination_range_in_peer_first_GCP_project` in `2nd-cloud-sql-psc-vm`
+Uncomment the DNS peering configurations (`dns-peering.tf`)
+1. **[dns-peering.tf](./1st-cloud-sql-psc-vm-composer-v3/dns-peering.tf)** 
 
 #### Run Terraform Commands
 Initialize and apply Terraform configurations for each project:
@@ -118,6 +96,53 @@ Initialize and apply Terraform configurations for each project:
    ```bash
    terraform apply
    ```
+
+### Cloud VPN Dynamic setup 
+    Seems until Dec 2024 not support gcloud command not support terraform neither for this reason, we can do manually from gcp console. please follow the below steps if you BGP Sessions works you can see similiar below.
+
+
+1. **Cloud Router 1st-cloud-sql-psc-vm-composer-v3**
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/cloudrouter.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/cloudrouter-1.png?raw=true?raw=true)
+
+
+2. **Cloud Router 2nd-cloud-sql-psc-vm**
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2dacloudrouter.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2dacloudrouter-1.png?raw=true?raw=true)
+
+3. **VPN Gateway 1st-cloud-sql-psc-vm-composer-v3**
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/vpngateway0.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/vpngateway.png?raw=true?raw=true)
+
+
+4. **VPN Tunnels 1st-cloud-sql-psc-vm-composer-v3**
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/vpntunnels.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/vpntunnels1.png?raw=true?raw=true)
+
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/vpntunnels2.png?raw=true?raw=true)
+
+5. **VPN Gateway 2nd-cloud-sql-psc-vm**
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2davpngateway.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2davpngateway1.png?raw=true?raw=true)
+
+
+6. **VPN Tunnels 2nd-cloud-sql-psc-vm**
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2davpntunels.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2davpntunels1.png?raw=true?raw=true)
+
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/2davpntunels2.png?raw=true?raw=true)
 
 ### Overview
 

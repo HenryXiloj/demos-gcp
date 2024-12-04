@@ -1,4 +1,4 @@
-resource "google_dns_managed_zone" "peering_zone" {
+/* resource "google_dns_managed_zone" "peering_zone" {
   depends_on = [google_compute_network.nw1-vpc]
 
   name        = "manual-sql-zone"
@@ -19,3 +19,4 @@ resource "google_dns_managed_zone" "peering_zone" {
     }
   }
 }
+ */
