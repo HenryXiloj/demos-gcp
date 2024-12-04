@@ -9,9 +9,10 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
 - `gcloud` CLI installed and configured
 - Access to Google Cloud Composer and Cloud SQL
 
-## Setup
+### Setup
 
-1. Clone this repository to your local machine.
+### Option using cloud sql proxy
+1. Clone this repository to your local machine. if you using this option follown all bellow steps
 
 2. Download the Cloud SQL Proxy binary:
    ```bash
@@ -19,7 +20,9 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
    curl "$URL/cloud-sql-proxy.linux.amd64" -o cloud-sql-proxy
    chmod +x cloud-sql-proxy
    ```
-   
+
+### Terraform setup 
+
 3. Update the `terraform.tfvars` file with your project details:
    ```hcl
    project_id     = "<my-project-id>"
@@ -82,6 +85,11 @@ This project demonstrates how to connect Airflow 2 in Google Cloud Composer 3 to
       ```bash
       terraform apply -auto-approve
       ```       
+
+### Option using cloud sql connect direclty with IP address
+
+## Note: 
+ If using this option omit the next steps 1,2 and 6. and using `cloud_sql_proxy_psc_dag.py` 
 
 ## Composer Configuration
 
