@@ -178,9 +178,7 @@ Initialize and apply Terraform configurations for each project:
    Definitions for variables used across the Terraform configuration files.
 
 
-## Images
-
-For visual reference:
+## Test Composer V3
 
 1. **Home**
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img1.png?raw=true?raw=true)
@@ -195,5 +193,10 @@ For visual reference:
 
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img5.png?raw=true?raw=true)
 
+## Test VM instance
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img5.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img6.png?raw=true?raw=true)
 
    

@@ -202,21 +202,23 @@ Seems until Dec 2024 not support gcloud command and not support terraform neithe
 8. **[variable.tf](./2nd-cloud-sql-psc-vm/variable.tf)**  
    Definitions for variables used across the Terraform configuration files.
 
-## Images
-
-For visual reference:
+## Test Composer V3
 
 1. **Home**  
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img1.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img1.png?raw=true?raw=true)
 
 2. **Cloud SQL PSC Host conexion** 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img2.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img2.png?raw=true?raw=true)
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img3.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img3.png?raw=true?raw=true)
 
 3. **Cloud SQL PSC Remote conexion** 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img4.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img4.png?raw=true?raw=true)
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img5.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img5.png?raw=true?raw=true)
 
-   
+## Test VM instance
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img5.png?raw=true?raw=true)
+
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img/img6.png?raw=true?raw=true)
