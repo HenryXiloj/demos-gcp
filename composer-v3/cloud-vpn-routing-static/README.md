@@ -181,22 +181,22 @@ Initialize and apply Terraform configurations for each project:
 ## Test Composer V3
 
 1. **Home**
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img1.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img1.png?raw=true?raw=true)
 
 2. **Cloud SQL PSC Host conexion** 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img2.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img2.png?raw=true?raw=true)
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img3.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img3.png?raw=true?raw=true)
 
 3. **Cloud SQL PSC Remote conexion**
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img4.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img4.png?raw=true?raw=true)
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img5.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img5.png?raw=true?raw=true)
 
 ## Test VM instance
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img6.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img6.png?raw=true?raw=true)
 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-dynamic/img7.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/cloud-vpn-routing-static/img/img7.png?raw=true?raw=true)
 
    
