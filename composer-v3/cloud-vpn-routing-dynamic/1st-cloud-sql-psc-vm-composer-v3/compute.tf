@@ -6,12 +6,6 @@ resource "google_compute_address" "internal_address" {
   address      = var.private_google_access_ips[0]
   subnetwork   = google_compute_subnetwork.nw1-subnet1.name
 }
-//google_compute_address.vpn_static_ip_437404.address
-resource "google_compute_address" "vpn_static_ip" {
-  name    = "vpn-static-ip"
-  region  = var.region
-  project = var.project_id
-}
 
 data "google_sql_database_instance" "service_attchment" {
   depends_on = [google_sql_database_instance.psc_instance]
