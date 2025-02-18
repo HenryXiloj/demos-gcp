@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: demo-pub-sub-api
+  cloud:
+    gcp:
+      project-id: <my-project-id>
