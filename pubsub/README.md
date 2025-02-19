@@ -53,11 +53,6 @@ mvn spring-boot:run
 - Open `http://localhost:8080`
 - Enter a message in the form and click **Publish!**
 
-
-## GitHub Repository
-Find the full code on GitHub: [GitHub - HenryXiloj/demos-gcp](https://github.com/HenryXiloj/demos-gcp/tree/main/pubsub)
-
-
 ## Contact
 - **LinkedIn**: [Henry Xiloj Herrera](https://www.linkedin.com/in/henry-xiloj-herrera)
 - **Blog**: [henryxiloj.com](https://jarmx.blogspot.com/)
