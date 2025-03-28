@@ -1,5 +1,5 @@
-project_id     = "terraform-workspace-455102"
-project_number = "22730163775"
+project_id     = <MY_PROJECT_ID>
+project_number = <MY_PROJECT_NUMBER>
 region         = "us-central1"
 zone           = "us-central1-a"
 

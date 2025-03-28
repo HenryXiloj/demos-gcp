@@ -14,6 +14,8 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
+IP_CONNECTION = '<MY_PRIVATE_IP_ADDRESS_FROM_CLOUD_SQL_PSA>'
+
 # Define default_args for DAG
 default_args = {
     'owner': 'airflow',
@@ -65,7 +67,7 @@ def check_worker_info_and_connectivity():
         logger.info(f"Worker Operating System: {os_name} {os_version}")
 
         # Cloud SQL PSA Private IP
-        psc_ip = "10.113.0.3"
+        psc_ip = IP_CONNECTION
         psc_port = 5432  # Change to 3306 if using MySQL
 
         # Attempt to connect to the private IP address

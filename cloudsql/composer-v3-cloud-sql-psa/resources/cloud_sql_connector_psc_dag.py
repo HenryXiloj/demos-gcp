@@ -15,10 +15,10 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 # Cloud SQL connection variables
-IP_CONNECTION = '10.113.0.3'
-DB_NAME = 'my-database2'
-DB_USER = 'henry'
-DB_PASSWORD = 'hxi123'
+IP_CONNECTION = '<MY_PRIVATE_IP_ADDRESS_FROM_CLOUD_SQL_PSA>'
+DB_NAME = '<MY_DATABASE>'
+DB_USER = '<MY_USER>'
+DB_PASSWORD = '<MY_PASSOWORD>'
 DB_PORT = 5432
 
 

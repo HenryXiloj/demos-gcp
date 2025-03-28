@@ -20,8 +20,6 @@ resource "google_composer_environment" "test" {
       pypi_packages = {
         pg8000                     = "==1.31.2"
         cloud-sql-python-connector = "==1.12.1"
-        google-auth                = "==2.35.0"
-        google-auth-oauthlib       = "==1.2.1"
       }
     }
 
