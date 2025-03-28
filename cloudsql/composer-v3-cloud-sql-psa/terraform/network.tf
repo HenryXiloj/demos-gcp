@@ -1,4 +1,7 @@
-#"10.113.0.0/24"  range cloud sql psa -> private IP. 
+#<MY_PRIVATE_IP_ADDRESS_FROM_CLOUD_SQL_PSA> e.g=10.113.0.3 -> range "10.113.0.0/24" 
+# nw1-internal-allow
+# allow_postgres_vpc
+# allow_sql_proxy_egress
 
 # VPC Network: Defines the private network for internal services and Cloud SQL (PSA).
 resource "google_compute_network" "nw1-vpc" {

@@ -38,7 +38,7 @@ resource "google_sql_user" "myuser2" {
   depends_on = [google_sql_database_instance.my_private_instance]
 
   project  = var.project_id
-  name     = "henry"
-  password = "hxi123"
+  name     = "<MY_USER>"
+  password = "<MY_PASSWORD>"
   instance = google_sql_database_instance.my_private_instance.name
 }
