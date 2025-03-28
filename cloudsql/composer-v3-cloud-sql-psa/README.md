@@ -86,8 +86,8 @@ If you encounter any issues:
 For visual reference:
 
 1.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img1.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psa/img1.png?raw=true?raw=true)
 
 2.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img2.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psa/img2.png?raw=true?raw=true)
 
