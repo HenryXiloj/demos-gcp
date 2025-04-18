@@ -183,5 +183,5 @@ For visual reference:
 ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/composer-v3-cloud-sql-psc/img4.png?raw=true?raw=true)
 
 5.
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/cloudsql/composer-v3-cloud-sql-psc/img5.png?raw=true?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/composer-v3/composer-v3-cloud-sql-psc/img5.png?raw=true?raw=true)
 
