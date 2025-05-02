@@ -43,3 +43,4 @@ cloudsql/private-service-connect-PSC/cloud-run-spring-boot3/*.iws
 cloudsql/private-service-connect-PSC/cloud-run-spring-boot3/*.iml
 cloudsql/private-service-connect-PSC/cloud-run-spring-boot3/*.ipr
 
+.vscode/

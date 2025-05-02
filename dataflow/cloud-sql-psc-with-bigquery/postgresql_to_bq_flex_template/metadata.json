@@ -1,0 +1,41 @@
+{
+    "name": "PostgreSQL PSC to BigQuery",
+    "description": "Read from PostgreSQL (via PSC + SSL) and load into BigQuery",
+    "parameters": [
+      {
+        "name": "output_table",
+        "label": "BigQuery Table",
+        "helpText": "The target BigQuery table (e.g., project:dataset.table)"
+      },
+      {
+        "name": "failed_table",
+        "label": "BigQuery Error Table",
+        "helpText": "Table to store failed rows if any (e.g., project:dataset.failed_table)"
+      },
+      {
+        "name": "gcs_ssl_path",
+        "label": "GCS Path to SSL certs",
+        "helpText": "Path to SSL certs in GCS (e.g., gs://bucket/path/to/certs)"
+      },
+      {
+        "name": "psc_host",
+        "label": "PSC DNS host",
+        "helpText": "The Private Service Connect DNS of Cloud SQL"
+      },
+      {
+        "name": "db_name",
+        "label": "Database name",
+        "helpText": "PostgreSQL database name"
+      },
+      {
+        "name": "db_user",
+        "label": "DB username",
+        "helpText": "PostgreSQL username"
+      },
+      {
+        "name": "db_pass",
+        "label": "DB password",
+        "helpText": "PostgreSQL password"
+      }
+    ]
+}
