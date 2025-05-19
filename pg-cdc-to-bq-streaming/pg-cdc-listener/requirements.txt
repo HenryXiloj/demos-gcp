@@ -1,0 +1,7 @@
+Flask
+gunicorn
+Werkzeug
+pg8000 
+cloud-sql-python-connector
+psycopg2-binary
+google-cloud-pubsub

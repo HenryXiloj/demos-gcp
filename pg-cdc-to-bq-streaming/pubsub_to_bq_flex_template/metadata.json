@@ -1,0 +1,24 @@
+{
+  "name": "PubSub to BigQuery CDC",
+  "description": "Streams CDC events from Pub/Sub to BigQuery",
+  "parameters": [
+    {
+      "name": "input_topic",
+      "label": "Input Pub/Sub topic",
+      "helpText": "Pub/Sub topic to read from",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "output_table",
+      "label": "Output BigQuery Table",
+      "helpText": "Fully-qualified BigQuery table name",
+      "paramType": "TEXT"
+    },
+    {
+      "name": "failed_table",
+      "label": "Failed BigQuery Table",
+      "helpText": "BigQuery table to store failed records (optional)",
+      "paramType": "TEXT"
+    }
+  ]
+}
