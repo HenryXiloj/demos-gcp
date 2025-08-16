@@ -1,4 +1,4 @@
-﻿# Cloud SQL Terraform and Spring Boot App
+# Cloud SQL Terraform and Spring Boot App
 
 This repository contains 4 projects:
 
@@ -136,10 +136,10 @@ gcloud dns record-sets create DNS_NAME (this value come from 2.2) \
 ### Compute Engine VM instances
 1. Firewall rule in compute.tf `allow-ssh-from-cloud-run`
 2. Copy Internal IP from GCP Console
-   ![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/demo-cloudsql-cloudrun/internalIP.png?raw=true)
+   ![Internal IP Screenshot](https://raw.githubusercontent.com/HenryXiloj/demos-gcp/main/demo-cloudsql-cloudrun/internalIP.png)
 
 4. Open SSH 
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/demo-cloudsql-cloudrun/ssh.png?raw=true)
+![SSH Screenshot](https://raw.githubusercontent.com/HenryXiloj/demos-gcp/main/demo-cloudsql-cloudrun/ssh.png)
 
 5. Enable Password Authentication on the Server: Edit the SSH server configuration file on your Compute Engine VM instance. The location of the SSH server configuration file may vary depending on the Linux distribution, but it's commonly located at `/etc/ssh/sshd_config`.
 
@@ -251,13 +251,7 @@ gcloud iam service-accounts add-iam-policy-binding <MY-SERVICE-ACCOUNT> --projec
 ```
 
 ### Diagram
-![alt text](https://github.com/HenryXiloj/demos-gcp/blob/main/demo-cloudsql-cloudrun/option1.png?raw=true)
-
-
-
-
-
-
+![Architecture Diagram](https://raw.githubusercontent.com/HenryXiloj/demos-gcp/main/demo-cloudsql-cloudrun/option1.png)
 
 ### References
  -    https://cloud.google.com/sql/docs/postgres/configure-private-service-connect#connect-using-language-connectors
@@ -279,7 +273,3 @@ gcloud iam service-accounts add-iam-policy-binding <MY-SERVICE-ACCOUNT> --projec
  -    https://github.com/google-github-actions/auth/blob/main/docs/EXAMPLES.md
  -    https://www.youtube.com/watch?v=ZgVhU5qvK1M
  -    https://www.youtube.com/watch?v=BCoxv19yESw
- 
-
-
-
