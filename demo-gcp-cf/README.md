@@ -163,6 +163,3 @@ gcloud dns record-sets create DNS_NAME (this value come from 2.2) \
 ```bash
  terraform destroy -auto-approve
 ```
-
-### Diagram
-![alt text](https://raw.githubusercontent.com/HenryXiloj/demos-gcp/main/demo-gcp-cf/option2.png)
