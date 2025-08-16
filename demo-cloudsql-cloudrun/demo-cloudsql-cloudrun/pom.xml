@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.3</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.henry</groupId>
+	<artifactId>demo-cloudsql-cloudrun</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>demo-cloudsql-cloudrun</name>
+	<description>Demo project for Spring Boot with Cloud SQL (Postgres) , Cloud Run with Private Service Connect (PSC)</description>
+	<properties>
+		<java.version>17</java.version>
+		<maven.compiler.target>17</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Cloud SQL PostgreSQL Socket Factory -->
+		<!-- https://mvnrepository.com/artifact/com.google.cloud.sql/postgres-socket-factory -->
+		<dependency>
+			<groupId>com.google.cloud.sql</groupId>
+			<artifactId>postgres-socket-factory</artifactId>
+			<version>1.15.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.cloud/spring-cloud-gcp-starter-secretmanager -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-secretmanager</artifactId>
+			<version>5.0.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.jcraft/jsch -->
+		<dependency>
+			<groupId>com.jcraft</groupId>
+			<artifactId>jsch</artifactId>
+			<version>0.1.55</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!--<extensions>
+			<extension>
+				<groupId>com.google.cloud.artifactregistry</groupId>
+				<artifactId>artifactregistry-maven-wagon</artifactId>
+				<version>2.2.0</version>
+			</extension>
+		</extensions>-->
+		<finalName>demo-cloudsql-cloudrun</finalName>
+	</build>
+
+	<!-- Environment Settings
+	<repositories>
+		<repository>
+			<id>artifact-registry</id>
+			<url>artifactregistry://us-central1-maven.pkg.dev/terraform-workspace-413615/tf-repo</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>artifact-registry</id>
+			<url>artifactregistry://us-central1-maven.pkg.dev/terraform-workspace-413615/tf-repo</url>
+		</snapshotRepository>
+		<repository>
+			<id>artifact-registry</id>
+			<url>artifactregistry://us-central1-maven.pkg.dev/terraform-workspace-413615/tf-repo</url>
+		</repository>
+	</distributionManagement>-->
+</project>

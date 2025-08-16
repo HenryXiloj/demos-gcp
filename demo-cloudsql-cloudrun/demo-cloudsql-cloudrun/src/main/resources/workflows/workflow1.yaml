@@ -1,0 +1,50 @@
+- batch1:
+    call: http.get
+    args:
+      url: https://springboot-cloudsql-run-bfzyqsbe2a-uc.a.run.app/
+    result: first_response
+- validate_first_status_code:
+    switch:
+      - condition: '${first_response.code == 200}'
+        next: batch2
+      - condition: '${first_response.code == 404}'  # Example condition, adjust as needed
+        next: handle_not_found_error
+      - condition: '${true}'
+        next: handle_other_errors
+
+- batch2:
+    call: http.get
+    args:
+      url: https://springboot-cloudsql-run-bfzyqsbe2a-uc.a.run.app/
+    result: second_response
+- validate_second_status_code:
+    switch:
+      - condition: '${second_response.code == 200}'
+        next: batch3
+      - condition: '${second_response.code == 404}'  # Example condition, adjust as needed
+        next: handle_not_found_error
+      - condition: '${true}'
+        next: handle_other_errors
+
+- batch3:
+    call: http.get
+    args:
+      url: https://springboot-cloudsql-run-bfzyqsbe2a-uc.a.run.app/
+    result: third_response
+- validate_third_status_code:
+    switch:
+      - condition: '${third_response.code == 200}'
+        next: done
+      - condition: '${third_response.code == 404}'  # Example condition, adjust as needed
+        next: handle_not_found_error
+      - condition: '${true}'
+        next: handle_other_errors
+
+- handle_not_found_error:
+    return: "404 Not Found error occurred."
+
+- handle_other_errors:
+    return: "An error occurred during the HTTP request."
+
+- done:
+    return: "All steps completed successfully."

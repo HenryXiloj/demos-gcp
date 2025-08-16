@@ -1,0 +1,29 @@
+spring:
+  config:
+    import: sm://
+  cloud:
+    gcp:
+      sql:
+        enabled: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    jdbc-url: jdbc:postgresql:///my-database3
+    username: henry
+    password: ${sm://projects/terraform-workspace-413615/secrets/password-db}
+    maximum-pool-size: 5
+    minimum-idle: 5
+    connection-timeout: 10000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+    data-source-properties:
+      socketFactory: com.google.cloud.sql.postgres.SocketFactory
+      cloudSqlInstance: terraform-workspace-413615:us-central1:psc-instance
+      ipTypes: PSC
+  jpa:
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+

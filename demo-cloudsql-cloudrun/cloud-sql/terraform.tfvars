@@ -1,0 +1,8 @@
+project_id = "terraform-workspace-413615"
+region     = "us-central1"
+zone       = "us-central1-a"
+
+sec_region = "us-west1"
+sec_zone   = "us-west1-a"
+
+batch1_workflow = "batch1-workflow"
