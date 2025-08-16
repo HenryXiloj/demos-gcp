@@ -165,4 +165,4 @@ gcloud dns record-sets create DNS_NAME (this value come from 2.2) \
 ```
 
 ### Diagram
-![alt text](https://github.com/HenryXiloj/demo-gcp/blob/main/option2.png?raw=true)
+![alt text](https://raw.githubusercontent.com/HenryXiloj/demos-gcp/main/demo-gcp-cf/option2.png)
