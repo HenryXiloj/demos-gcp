@@ -136,10 +136,10 @@ gcloud dns record-sets create DNS_NAME (this value come from 2.2) \
 ### Compute Engine VM instances
 1. Firewall rule in compute.tf `allow-ssh-from-cloud-run`
 2. Copy Internal IP from GCP Console
-   ![alt text](https://github.com/HenryXiloj/demo-cloudsql-cloudrun/blob/main/internalIP.png?raw=true)
+   ![alt text](https://github.com/HenryXiloj/demos-gcp/demo-cloudsql-cloudrun/blob/main/internalIP.png?raw=true)
 
 4. Open SSH 
-![alt text](https://github.com/HenryXiloj/demo-cloudsql-cloudrun/blob/main/ssh.png?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/demo-cloudsql-cloudrun/blob/main/ssh.png?raw=true)
 
 5. Enable Password Authentication on the Server: Edit the SSH server configuration file on your Compute Engine VM instance. The location of the SSH server configuration file may vary depending on the Linux distribution, but it's commonly located at `/etc/ssh/sshd_config`.
 
@@ -251,7 +251,7 @@ gcloud iam service-accounts add-iam-policy-binding <MY-SERVICE-ACCOUNT> --projec
 ```
 
 ### Diagram
-![alt text](https://github.com/HenryXiloj/demo-cloudsql-cloudrun/blob/main/option1.png?raw=true)
+![alt text](https://github.com/HenryXiloj/demos-gcp/demo-cloudsql-cloudrun/blob/main/option1.png?raw=true)
 
 
 
@@ -280,4 +280,5 @@ gcloud iam service-accounts add-iam-policy-binding <MY-SERVICE-ACCOUNT> --projec
  -    https://www.youtube.com/watch?v=ZgVhU5qvK1M
  -    https://www.youtube.com/watch?v=BCoxv19yESw
  
+
 
