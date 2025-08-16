@@ -250,9 +250,6 @@ gcloud iam service-accounts add-iam-policy-binding <MY-SERVICE-ACCOUNT> --projec
  terraform destroy -auto-approve
 ```
 
-### Diagram
-![Architecture Diagram](https://raw.githubusercontent.com/HenryXiloj/demos-gcp/main/demo-cloudsql-cloudrun/option1.png)
-
 ### References
  -    https://cloud.google.com/sql/docs/postgres/configure-private-service-connect#connect-using-language-connectors
  -    https://cloud.google.com/sql/docs/postgres/configure-private-service-connect#connect-from-applications
@@ -273,3 +270,4 @@ gcloud iam service-accounts add-iam-policy-binding <MY-SERVICE-ACCOUNT> --projec
  -    https://github.com/google-github-actions/auth/blob/main/docs/EXAMPLES.md
  -    https://www.youtube.com/watch?v=ZgVhU5qvK1M
  -    https://www.youtube.com/watch?v=BCoxv19yESw
+
